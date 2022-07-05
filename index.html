@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        
+        <script src="greet.js"></script>
+        <script src="greet-widget.js" defer></script> 
+       
+        <script src="longest-word.js"></script>
+        <scripts src="longest-word-widget.js"></script>
+
+        <script src="total-phone-bill.js"></script>
+        <script src="total-phone-bill-widget.js"></script>
+
+        <script src="shortest-word.js"></script>
+        <script src="shortest-word-widget.js"></script>
+        
+        <script src="enough-airtime.js"></script>
+        <script src="enough-airtime-widget.js"></script>
+        <script src="//unpkg.com/alpinejs" defer></script>
+
+
+        <script>
+        //console.log(greet("Ceejay"));
+        //console.log(greet("Mandla"));
+        //console.log(greet("Xolani"));
+        </script>
+        <style>
+            .message {
+                padding: 1em;
+                background-color: lightgreen;
+                margin-bottom: 1em;
+            }
+
+            .input>label {
+                background-color: brown;
+                display: inline-block;
+                width: 15em;
+                padding: 0.4em;
+                font-weight: bold;
+            }
+
+            .input>input[type="text"] {
+                padding: 0.4em;
+                margin: 0.5em;
+            }
+
+            .widgets {
+                display: flex;
+            }
+        </style>
+</head>
+
+<body>
+
+    <div class="widgets">
+
+        <div x-data="greetWidget">
+            <h2>Greet Widget</h2>
+
+            <div x-show="message,length > 0" class="message" x-text="message">
+                You will be greeted here...
+            </div>
+
+            <label for="name">Please enter your name: </label>
+            <input type="text" x-model="name" id="name">
+
+            <button x-on:click="greetMe">Greet!</button>
+        </div>
+
+
+
+
+
+        <div x-data="{
+        str : '',
+        message : '',
+        showLongestword : false,
+        myLongestName(){
+            const mylongestWordMessage = longestWord(this.str);
+            console.log(mylongestWordMessage);
+            this.message = mylongestWordMessage;
+            setTimeout (() => {
+                this.message = '';
+            }, 3000);
+        }
+    }">
+            <h2>Longestword Widget</h2>
+
+            <div x-show="message.length > 0" class="message" x-text="message">
+                The lonhgest word will be shown here...
+            </div>
+
+            <label for="str">Please enter your name: </label>
+            <input type="text" x-model="str" id="str">
+
+            <button x-on:click="myLongestName">Longestword!</button>
+        </div>
+
+        
+
+
+
+
+        <div x-data="{
+        str : '',
+        message : '',
+        showShortestword : false,
+        myShortestName(){
+            const myshortestWordMessage = shortestWord(this.str);
+            console.log(myshortestWordMessage);
+            this.message = myshortestWordMessage;
+            setTimeout (() => {
+                this.message = '';
+            }, 3000);
+        }
+    }">
+            <h2>shortestword Widget</h2>
+
+            <div x-show="message.length > 0" class="message" x-text="message">
+                The shortest word will be shown here...
+            </div>
+
+            <label for="str">Please enter your name: </label>
+            <input type="text" x-model="str" id="str">
+
+            <button x-on:click="myShortestName">Shortestword!</button>
+        </div>
+    </div>
+
+
+
+
+<div class="phonebills">
+
+        <div x-data="totalPhoneBillWidget">
+
+            <style>
+                .displayview {
+                    padding: 1em;
+                    background-color: lightgreen;
+                    margin-bottom: 1em;
+                    margin: 1em;
+                }
+            </style>
+            <h2>totalPhoneBill Widget</h2>
+
+
+            <div class="styleput">
+                <label for="phoneBill">Please enter your calls: </label>
+                <input type="text" x-model="phoneBill" id="phoneBill">
+            </div>
+
+            <div class="displayview" x-text="airtimeMessage">
+            </div>
+
+            <div>
+                <button x-on:click="calculate">Calculate airtime usage</button>
+            </div>
+
+
+
+
+
+
+
+            <div class="Widget" x-data="enoughAirtimeWidget">
+                <h2>Enough airtime</h2>
+
+                <div class="input">
+                    <label for="usage">Please enter your airtime usage: </label>
+                    <input type="text" x-model="airtimeUsage" id="usage">
+                </div>
+
+                <div class="input">
+                    <label for="amount">Amount available: </label>
+                    <input type="text" x-model="availableAmount" id="amount">
+                </div>
+
+                <div class="message" x-text="airtimeMessage">
+                </div>
+
+                <div>
+                    <button x-on:click="calculate">Calculate phoneBill</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
