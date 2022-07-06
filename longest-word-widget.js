@@ -10,7 +10,6 @@ document.addEventListener('alpine:init', () => {
                 const mylongestWordMessage = longestWord(this.str);
                 console.log(mylongestWordMessage);
                 this.message = mylongestWordMessage;
-                
                 setTimeout(() => {
                     this.message = '';
                 }, 3000);

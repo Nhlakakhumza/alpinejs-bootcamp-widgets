@@ -32,12 +32,11 @@
         <style>
             .message {
                 padding: 1em;
-                background-color: lightgreen;
+                background-color: chocolate;
                 margin-bottom: 1em;
             }
 
             .input>label {
-                background-color: brown;
                 display: inline-block;
                 width: 15em;
                 padding: 0.4em;
@@ -52,14 +51,30 @@
             .widgets {
                 display: flex;
             }
+            .widget {
+                flex: 1;
+                border: 1px solid;
+                margin: 1em;
+                padding: 1em;
+                border-radius: 1em;
+                background-color: goldenrod ;
+                opacity:0.777;
+
+           }
+
+           .mywidgets {
+            background-color:maroon;
+           }
         </style>
 </head>
 
 <body>
 
+    <div class="mywidgets">
+
     <div class="widgets">
 
-        <div x-data="greetWidget">
+        <div class="widget" x-data="greetWidget">
             <h2>Greet Widget</h2>
 
             <div x-show="message,length > 0" class="message" x-text="message">
@@ -76,7 +91,7 @@
 
 
 
-        <div x-data="{
+        <div class="widget" x-data="{
         str : '',
         message : '',
         showLongestword : false,
@@ -106,7 +121,7 @@
 
 
 
-        <div x-data="{
+        <div class="widget" x-data="{
         str : '',
         message : '',
         showShortestword : false,
@@ -137,15 +152,16 @@
 
 <div class="phonebills">
 
-        <div x-data="totalPhoneBillWidget">
+        <div class="widget" x-data="totalPhoneBillWidget">
 
             <style>
                 .displayview {
                     padding: 1em;
-                    background-color: lightgreen;
+                    background-color: chocolate;
                     margin-bottom: 1em;
                     margin: 1em;
                 }
+                
             </style>
             <h2>totalPhoneBill Widget</h2>
 
@@ -191,6 +207,8 @@
             </div>
         </div>
     </div>
+
+</div>
 
 </body>
 
